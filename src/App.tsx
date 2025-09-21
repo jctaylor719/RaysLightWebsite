@@ -2,51 +2,45 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 // import "./App.css";
+import { NavLink, Outlet } from "react-router-dom";
 
 export default function App() {
   return (
-    <div
-      data-theme="emerald"
-      className="min-h-screen bg-base-200 flex flex-col items-center justify-center gap-6 p-8"
-    >
-      <h1 className="text-4xl font-bold">DaisyUI Test</h1>
-
-      <div className="flex gap-4">
-        <button className="btn btn-primary">Primary</button>
-        <button className="btn btn-secondary">Secondary</button>
-        <button className="btn btn-accent">Accent</button>
-      </div>
-
-      <div
-        className="w-40 h-16 rounded grid place-items-center font-semibold"
-        style={{ backgroundColor: "hsl(var(--p))", color: "hsl(var(--pc))" }}
-      >
-        Primary swatch
-      </div>
-
-      <div className="card w-80 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">Card Title</h2>
-          <p>
-            If you see a card with a shadow and **colored** buttons, DaisyUI is
-            working!
-          </p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-outline">Action</button>
+    <div className="min-h-screen bg-base-200">
+      {/* Navbar */}
+      <div className="navbar bg-base-100 shadow">
+        <div className="container mx-auto px-4">
+          <div className="flex-1">
+            <NavLink to="/" className="text-xl font-bold">
+              Ray’s Light
+            </NavLink>
+          </div>
+          <div className="flex gap-4 items-center">
+            <NavLink to="/" className="link link-hover">
+              Home
+            </NavLink>
+            <NavLink to="/about" className="link link-hover">
+              About
+            </NavLink>
+            <NavLink to="/products" className="link link-hover">
+              Products
+            </NavLink>
+            <NavLink to="/booking" className="btn btn-primary">
+              Book Now
+            </NavLink>
           </div>
         </div>
       </div>
 
-      {/* extra proof the theme variables are loaded */}
-      <div className="p-4 rounded-lg bg-primary text-primary-content">
-        Primary swatch
-      </div>
-      <div className="p-4 rounded-lg bg-secondary text-secondary-content">
-        Secondary swatch
-      </div>
-      <div className="p-4 rounded-lg bg-accent text-accent-content">
-        Accent swatch
-      </div>
+      {/* Page content */}
+      <main className="container mx-auto px-4 py-8">
+        <Outlet />
+      </main>
+
+      {/* Footer (simple placeholder) */}
+      <footer className="mt-16 py-8 text-center text-sm opacity-70">
+        © {new Date().getFullYear()} Ray’s Light
+      </footer>
     </div>
   );
 }
